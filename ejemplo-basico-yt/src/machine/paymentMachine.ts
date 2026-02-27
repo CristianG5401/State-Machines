@@ -37,6 +37,6 @@ export const transition = (
   if (!nextState) {
     return currentState;
   }
-   
+
   return nextState;
 };
