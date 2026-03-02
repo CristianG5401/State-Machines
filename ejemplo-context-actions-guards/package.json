@@ -5,7 +5,9 @@
   "private": true,
   "scripts": {
     "start": "bun run src/index.ts",
-    "start:watch": "bun --watch src/index.ts"
+    "start:watch": "bun --watch src/index.ts",
+    "format:changed": "git diff --name-only HEAD --relative -- . | xargs -r biome format --write",
+    "format:staged": "git diff --cached --name-only --relative -- . | xargs -r biome format --write"
   },
   "devDependencies": {
     "@biomejs/biome": "2.4.4",
