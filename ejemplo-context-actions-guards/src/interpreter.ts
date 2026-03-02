@@ -1,9 +1,17 @@
-export function transition(machine, currentState, currentContext, eventName, eventPayload = {}) {
+export function transition(
+  machine,
+  currentState,
+  currentContext,
+  eventName,
+  eventPayload = {},
+) {
   const stateNode = machine.states[currentState];
   const transitionConfig = stateNode.on[eventName];
 
   if (!transitionConfig) {
-    console.warn(`[Aviso]: Transición no permitida - ${eventName} desde ${currentState}`);
+    console.warn(
+      `[Aviso]: Transición no permitida - ${eventName} desde ${currentState}`,
+    );
     return { value: currentState, context: currentContext };
   }
 
@@ -23,6 +31,6 @@ export function transition(machine, currentState, currentContext, eventName, eve
 
   return {
     value: transitionConfig.target,
-    context: nextContext
+    context: nextContext,
   };
 }
